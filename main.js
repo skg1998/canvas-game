@@ -99,5 +99,24 @@ loadImages((images) => {
         queueAnimation.push("forward");
     }
 
+
+    document.addEventListener("keyup", (event) => {
+        const key = event.key;
+        switch (key) {
+            case "ArrowLeft":
+                queueAnimation.push("backward");
+                break;
+            case "ArrowRight":
+                queueAnimation.push("forward");
+                break;
+            case "ArrowUp":
+                queueAnimation.push("kick");
+                break;
+            case "ArrowDown":
+                queueAnimation.push("punch");
+                break;
+        }
+    })
+
     aux();
 })
