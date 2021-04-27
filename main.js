@@ -16,7 +16,7 @@ let loadImage = (src, callback) => {
 }
 
 let imagePath = (frameNumber, animation) => {
-    return "/images/" + animation + "/" + frameNumber + ".png";
+    return "https://skg1998.github.io/images/" + animation + "/" + frameNumber + ".png";
 }
 
 //all frames of game
