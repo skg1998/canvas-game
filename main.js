@@ -72,6 +72,7 @@ let animate = (ct, images, animation, callback) => {
 
 loadImages((images) => {
     let queueAnimation = [];
+    let score = 0;
 
     let aux = () => {
         let selectedAnimation;
@@ -80,19 +81,31 @@ loadImages((images) => {
         } else {
             selectedAnimation = queueAnimation.shift();
         }
+
+        if (score > 10) {
+            document.getElementById("score").innerHTML = "You win";
+        } else if (score < 0) {
+            document.getElementById("score").innerHTML = "Game Over";
+        } else {
+            document.getElementById("score").innerHTML = score;
+        }
+
         animate(ctx, images, selectedAnimation, aux);
     }
 
     document.getElementById("kick").onclick = () => {
         queueAnimation.push("kick");
+        score += 2;
     }
 
     document.getElementById("punch").onclick = () => {
         queueAnimation.push("punch");
+        score++;
     }
 
     document.getElementById("backward").onclick = () => {
         queueAnimation.push("backward");
+        score -= 2;
     }
 
     document.getElementById("forward").onclick = () => {
@@ -117,6 +130,5 @@ loadImages((images) => {
                 break;
         }
     })
-
     aux();
 })
